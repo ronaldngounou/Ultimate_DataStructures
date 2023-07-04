@@ -17,6 +17,16 @@ public class Main {
         tree.insert(10);
         tree.find(10);
 
+        Tree tree2 = new Tree();
+        tree2.insert(7);
+        tree2.insert(4);
+        tree2.insert(9);
+        tree2.insert(1);
+        tree2.insert(6);
+        tree2.insert(8);
+        tree2.insert(10);
+        tree2.find(10);
+
         // Tree Traversals
          /*Breadth First (Level order traversal)
          Depth First
@@ -45,6 +55,13 @@ public class Main {
         // tree.traversePreOrder();
         // tree.traverseInOrder();
         //tree.traversePostOrder();
+        //System.out.println(tree.height());
+        //System.out.println(tree.min());
+
+        // Interview question
+        System.out.println(tree.equals(null));
+
+
 
     }
 
