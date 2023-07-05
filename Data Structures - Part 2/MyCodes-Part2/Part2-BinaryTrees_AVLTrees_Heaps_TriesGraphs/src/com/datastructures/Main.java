@@ -7,7 +7,7 @@ public class Main {
 
         // Building a Tree
 
-        Tree tree = new Tree();
+        /*Tree tree = new Tree();
         tree.insert(7);
         tree.insert(4);
         tree.insert(9);
@@ -25,7 +25,7 @@ public class Main {
         tree2.insert(6);
         tree2.insert(8);
         tree2.insert(10);
-        tree2.find(10);
+        tree2.find(10);*/
 
         // Tree Traversals
          /*Breadth First (Level order traversal)
@@ -59,9 +59,25 @@ public class Main {
         //System.out.println(tree.min());
 
         // Interview question
-        System.out.println(tree.equals(null));
+        //System.out.println(tree.equals(null));
+        //tree.swapRoot();
+        //System.out.println(tree.isBinarySearchTree());
 
+        // Interview question - Print the nodes at a K distance from the root.
+        // Break the problem down such that eventually the distance becomes 0
+        //var list = tree.getNodesAtDistance(1);
+        //System.out.println(list);
+        //System.out.println(tree.traverseLevelOrder());
+        /*System.out.println(tree.size());
+        System.out.println(tree.countLeaves());
+        System.out.println(tree.contains(-1));
+        System.out.println(tree.getAncestors(8));*/
 
+        // AVL Trees
+        var tree = new AVLTree();
+        tree.insert(10);
+        tree.insert(20);
+        tree.insert(30);
 
     }
 

@@ -1,5 +1,9 @@
 package com.datastructures;
 
+import java.net.Inet4Address;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Tree {
     private class Node{
         // insert(value)
@@ -85,7 +89,6 @@ public class Tree {
     }
 
     public void traverseInOrder(){ traverseInOrder(root); }
-
     private void traverseInOrder(Node root){
         if (root==null)
             return; //move forward
@@ -108,7 +111,6 @@ public class Tree {
     }
 
     public int height(){ return height(root); }
-
     private int height(Node root){
         if (root==null)
             return -1;
@@ -151,7 +153,6 @@ public class Tree {
             return false;
         return equals(root, other.root);
     }
-
     private boolean equals(Node first, Node second){
         if (first == null && second == null)
             return true;
@@ -163,6 +164,146 @@ public class Tree {
 
         return false;
     }
+
+    public boolean isBinarySearchTree(){
+        return isBinarySearchTree(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    public void  swapRoot(){
+        var temp = root.leftChild;
+        root.leftChild = root.rightChild;
+        root.rightChild = temp;
+    }
+
+    private boolean isBinarySearchTree(Node root, int min, int max){
+        //traverse the tree and check if the values are in the good range
+        if(root==null)
+            return true;
+        if(root.value<min || root.value>max) //out of range
+            return false;
+
+        return isBinarySearchTree(root.leftChild, min, root.value - 1)
+             && isBinarySearchTree(root.rightChild, root.value + 1 , max);
+
+
+    }
+
+    public ArrayList<Integer> getNodesAtDistance (int distance){
+        ArrayList<Integer> list = new ArrayList<>();
+        getNodesAtDistance(root, distance, list);
+        return list;
+
+    }
+    private void getNodesAtDistance (Node root, int distance, ArrayList<Integer> list){
+        if (root==null)
+            return;
+
+        if (distance==0){
+            list.add(root.value);
+            return;
+        }
+        // Recursively traverse the tree by looking at the left and right child
+        getNodesAtDistance(root.leftChild, distance-1, list);
+        getNodesAtDistance(root.rightChild, distance-1, list);
+
+    }
+
+    //Once we get the height of the tree, we can print each node at each level
+
+    public ArrayList<Integer> traverseLevelOrder(){
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for (var i=0; i<=height(root); i++){
+            var list = getNodesAtDistance(i);
+            for (var value : list)
+                result.add(value);
+        }
+        return result;
+    }
+
+    public int size(){
+        return size(root);
+    }
+    private int size(Node root){
+        if (root==null)
+            return 0;
+        if (root.leftChild == null && root.rightChild == null) //isLeaf
+            return 1;
+        return 1 + size(root.leftChild) + size(root.rightChild);
+
+    }
+
+
+    public int countLeaves(){
+          return countLeaves(root);
+    }
+    private int countLeaves(Node root){
+        if (root.leftChild == null && root.rightChild == null) //isLeaf
+            return 1;
+        return countLeaves(root.leftChild) + countLeaves(root.rightChild);
+    }
+
+    public int max(){return max(root);}
+    private int max(Node root){
+        // As it is a binary search tree, the rightmost element of the tree is the maximum.
+        if (root.rightChild==null)
+            return root.value;
+        return max(root.rightChild);
+    }
+
+    public boolean contains(int value){
+        return contains(value, root);
+    }
+    private boolean contains(int value, Node root){
+     if (root==null)
+         return false;
+
+     if (root.value==value)
+         return true;
+
+     return contains(value, root.leftChild) || contains(value, root.rightChild);
+
+
+    }
+
+    public boolean areSibling(int first, int second){
+        return areSibling(root, first, second);
+    }
+    private boolean areSibling(Node root, int first, int second){
+        if (root==null)
+            return false;
+
+        var areSibling = false;
+        if(root.leftChild != null && root.rightChild != null){
+            areSibling = (root.leftChild.value == first && root.rightChild.value == second) ||
+                    (root.rightChild.value == first && root.leftChild.value == second);
+        }
+
+        return areSibling ||
+                areSibling(root.leftChild, first, second) ||
+                areSibling(root.rightChild, first, second);
+
+    }
+
+    public ArrayList<Integer> getAncestors(int value){
+        var list = new ArrayList<Integer>();
+        getAncestors(root, value, list);
+        return list;
+    }
+    private boolean getAncestors(Node root, int value, ArrayList<Integer> list){
+
+        if (root==null)
+            return false;
+        if (root.value == value)
+            return true;
+
+        if (getAncestors(root.leftChild, value, list) || getAncestors(root.rightChild, value, list)){
+           list.add(root.value);
+            return true;
+        }
+        return false;
+    }
+
 
 
 }
