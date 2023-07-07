@@ -7,6 +7,41 @@ public class Heap {
     private int[] items = new int[10];
     private int size;
 
+    public static boolean isMaxHeap(int[] array){ return isMaxHeap(array,0);}
+
+    private static boolean isMaxHeap(int[] array, int index){
+        //All leaf nodes are valid
+        var lastParentIndex = (array.length - 2)/2;
+        if (index>lastParentIndex)
+            return true;
+
+        var leftChildIndex = index * 2 +1;
+        var rightChildIndex = index *2+2;
+
+        /*var isValidParent=false;
+        if(array[index] >= array[leftChildIndex] && array[index] >= array[rightChildIndex])
+            isValidParent = true;
+        if(isValidParent && isMaxHeap(array, leftChildIndex) && isMaxHeap(array, rightChildIndex))
+            return true;
+
+        return false;*/
+
+        var isValidParent =
+                array[index] >= array[leftChildIndex] &&
+                array[index] >= array[rightChildIndex];
+
+        return isValidParent &&
+                isMaxHeap(array, leftChildIndex) &&
+                isMaxHeap(array, rightChildIndex);
+    }
+
+    public int max(){
+        if (size==0)
+            throw new IllegalStateException();
+
+        return items[0];
+    }
+
     public void insert(int value){
         if(size == items.length)
             throw new IllegalStateException();
@@ -19,7 +54,7 @@ public class Heap {
     }
 
     public int remove(){
-        if (size == 0)
+        if (isEmpty())
             throw new IllegalStateException();
 
         var root = items[0];
@@ -31,6 +66,8 @@ public class Heap {
         return root;
 
     }
+
+    public boolean isEmpty(){ return (size==0);}
 
     private void bubbleDown(){
         var index = 0;
@@ -44,6 +81,7 @@ public class Heap {
     private boolean hasLeftChild(int index){
         return leftChildIndex(index) <= size;
     }
+
     private boolean hasRightChild(int index){
         return rightChildIndex(index) <= size;
     }
@@ -79,7 +117,6 @@ public class Heap {
     private int leftChildIndex(int index){ return index * 2 + 1;}
 
     private int rightChildIndex(int index){ return index * 2 + 2;}
-
 
     private void bubbleUp(){
         var index = size - 1;

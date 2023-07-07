@@ -2,6 +2,8 @@ package com.datastructures;
 
 import org.w3c.dom.ls.LSOutput;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -80,14 +82,35 @@ public class Main {
         tree.insert(30);*/
 
         var heap = new Heap();
-        heap.insert(10);
+        /*heap.insert(10);
         heap.insert(5);
         heap.insert(17);
         heap.insert(4);
         heap.insert(22);
         System.out.println(heap.remove());
-        System.out.println("Done");
+        System.out.println("Done");*/
+        // Heap Sort
+        int[] numbers = {5, 3, 8, 4, 1, 2};
+        /*for (var number: numbers)
+            heap.insert(number);
+        // for (var i=0; i<numbers.length; i++)   //sorts the array in descending order.
+        for (var i=numbers.length -1 ; i>= 0; i--) //sorts the array in ascending order.
+            numbers[i] = heap.remove();
+        System.out.println(Arrays.toString(numbers));*/
 
+
+        //Priority queues
+
+        // Heapify = transforming an array to an heap in place
+        //loop main loop
+        // if a number is less than equal to one of its children, I bubble it down.
+
+        //MaxHeap.heapify(numbers);
+        //System.out.println(Arrays.toString(numbers));*/
+
+        // Kth Largest Item
+        //System.out.println(MaxHeap.getKthLargest(numbers,3));
+        System.out.println(Heap.isMaxHeap(numbers));
 
 
     }
