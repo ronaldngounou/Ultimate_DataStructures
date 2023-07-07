@@ -74,10 +74,21 @@ public class Main {
         System.out.println(tree.getAncestors(8));*/
 
         // AVL Trees
-        var tree = new AVLTree();
+        /*var tree = new AVLTree();
         tree.insert(10);
         tree.insert(20);
-        tree.insert(30);
+        tree.insert(30);*/
+
+        var heap = new Heap();
+        heap.insert(10);
+        heap.insert(5);
+        heap.insert(17);
+        heap.insert(4);
+        heap.insert(22);
+        System.out.println(heap.remove());
+        System.out.println("Done");
+
+
 
     }
 

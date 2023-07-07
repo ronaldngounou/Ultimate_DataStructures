@@ -305,5 +305,20 @@ public class Tree {
     }
 
 
+    private boolean isBalanced(Node root){
+        if (root == null)
+            return true;
+
+        var balanceFactor = height(root.leftChild) - height(root.rightChild);
+
+        if (Math.abs(balanceFactor) <= 1 && isBalanced(root.leftChild)&& isBalanced(root.rightChild))
+            return true;
+        return false;
+    }
+
+    // number of nodes in function of the height = 2^(h+1)-1.
+    public boolean isPerfect(){
+        return size() == (Math.pow(2, height() + 1) - 1);
+    }
 
 }
