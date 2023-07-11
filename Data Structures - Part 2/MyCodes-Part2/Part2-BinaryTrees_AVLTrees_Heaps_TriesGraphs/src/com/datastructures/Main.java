@@ -110,7 +110,48 @@ public class Main {
 
         // Kth Largest Item
         //System.out.println(MaxHeap.getKthLargest(numbers,3));
-        System.out.println(Heap.isMaxHeap(numbers));
+        //System.out.println(Heap.isMaxHeap(numbers));
+
+        // Tries
+        /*var trie = new Trie();
+        trie.insert("car");
+        trie.insert("care");
+        trie.insert("card");
+        trie.insert("careful");
+        trie.insert("egg");
+        //System.out.println(trie.contains(null));
+        System.out.println(trie.contains("car"));
+        System.out.println(trie.contains(""care"));
+        System.out.println(trie.findWords("care"));
+        String str = "car";
+        System.out.println();*/
+
+        var graph = new Graph();
+        /*graph.addNode("A");
+        graph.addNode("B");
+        graph.addNode("C");
+        graph.addNode("D");
+        graph.addEdge("A", "B");
+        graph.addEdge("B", "D");
+        graph.addEdge("D", "C");
+        graph.addEdge("A", "C");
+        graph.traverseBreadthFirst("C");*/
+
+        // Topological Sort
+        graph.addNode("A");
+        graph.addNode("B");
+        graph.addNode("X");
+        graph.addNode("P");
+        graph.addEdge("X", "A");
+        graph.addEdge("A", "P");
+        graph.addEdge("X", "B");
+        graph.addEdge("B", "P");
+        graph.addEdge("A", "B");
+
+        System.out.println(graph.hasCycle());
+
+
+
 
 
     }
