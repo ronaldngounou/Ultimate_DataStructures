@@ -105,13 +105,14 @@ public class WeightedGraph {
         while(!queue.isEmpty()){
             var current = queue.remove().node;
             visited.add(current);
-
+            //look at all the unvisited neighbours of the current node
             for (var edge : current.getEdges()){
                 if (visited.contains(edge.to))
                     continue;
 
+
                 var newDistance = distances.get(current) + edge.weight;
-                if (newDistance < distances.get(edge.to)){
+                if (newDistance < distances.get(edge.to)){ //edge.to is our neighbour If the new distance is smaller than the distance we have recorded for our neighbour, we should update our table
                     distances.replace(edge.to, newDistance);
                     previousNodes.put(edge.to, current);
                     queue.add(new NodeEntry(edge.to, newDistance));
@@ -120,8 +121,9 @@ public class WeightedGraph {
 
         }
 
-        //add all the nodes in a stack and remove them to have the nodes
+        //add all the previous nodes in a stack and remove them to have the nodes
         Stack<Node> stack = new Stack<>();
+        //initially we push the target node to the stack because it is not in the stack column.
         stack.push(toNode);
         var previous = previousNodes.get(toNode);
         while(previous !=null){
@@ -133,8 +135,7 @@ public class WeightedGraph {
         while (!stack.isEmpty())
             path.add(stack.pop().label);
 
-
-
+        //return distances.get(nodes.get(to))
         return path;
     }
 

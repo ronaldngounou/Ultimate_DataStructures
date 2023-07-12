@@ -8,7 +8,6 @@ public class Path {
 
     public void add(String node){
         nodes.add(node);
-
     }
 
     @Override
