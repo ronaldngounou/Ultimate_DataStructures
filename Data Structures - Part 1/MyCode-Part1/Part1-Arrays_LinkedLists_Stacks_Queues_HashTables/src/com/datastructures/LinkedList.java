@@ -59,7 +59,7 @@ public class LinkedList {
         return -1;
     }
 
-    public boolean contains(int item){
+    /*public boolean contains(int item){
         var current = head;
         while(current!=null){
             if (current.value == item)
@@ -67,6 +67,28 @@ public class LinkedList {
             current = current.next;
         }
         return false;
+    }*/
+    public boolean contains(int item){
+        var node = new Node(item);
+        var current = head;
+        while(current != null){
+            if (current.value == node.value)
+                return true;
+            current = current.next;
+        }
+        return false;
+
+    }
+
+    public static int counts(LinkedList list){
+        int counter = 0;
+        var current = list.head;
+        while(current != null){
+            counter++;
+            current = current.next;
+        }
+        return counter;
+
     }
 
     public void removeFisrt(){
@@ -85,7 +107,7 @@ public class LinkedList {
         size --;
     }
 
-    public void removeLast(){
+    /*public void removeLast(){
         // [10 -> 20 -> 30]
         if (head==null)
             throw new NoSuchElementException();
@@ -99,6 +121,30 @@ public class LinkedList {
             tail.next = null;
         }
         size--;
+
+    }*/
+    public void removeLast(){
+        if (head == null)
+            throw new NoSuchElementException();
+
+        if (head == tail){
+            head = tail = null;
+        }
+        else{
+
+            var current = head;
+            while (current != null){
+                if (current.next == tail) break;
+                else
+                    current = current.next;
+            }
+            var previous = current;
+            previous.next = null;
+            tail = previous;
+
+            size--;
+
+        }
 
     }
 

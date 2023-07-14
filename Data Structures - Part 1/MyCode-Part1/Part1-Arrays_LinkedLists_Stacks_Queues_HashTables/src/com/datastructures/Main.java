@@ -1,4 +1,7 @@
 package com.datastructures;
+import com.datastructures.*;
+import com.datastructures.LinkedList;
+
 
 import java.util.*;
 import java.util.Stack;
@@ -34,17 +37,20 @@ public class Main {
         others.print();
         //System.out.println("others reversed");
         others.reverse();
-        others.print();
-
+        others.print();*/
 
         // LinkedList
         var list = new LinkedList();
         list.addLast(10);
+
+        //var list = new LinkedList();
         list.addLast(20);
         list.addLast(30);
         list.addLast(40);
         list.addLast(50);
         list.addLast(60);
+
+        System.out.println(LinkedList.counts(list));
 
 //        System.out.println(list.indexOf(30));
 //        System.out.println(list.contains(55));
@@ -52,7 +58,7 @@ public class Main {
 //        list.removeFisrt();
 //        System.out.println(list.size());
         //list.reverse();
-        System.out.println("middle of the list:");
+        /*System.out.println("middle of the list:");
         list.printMiddle();
         var array = list.toArray();
         System.out.println(Arrays.toString(array));
@@ -259,14 +265,14 @@ public class Main {
         System.out.println("Done");*/
 
         // Most Frequent Character in an array
-        HashTableExercises hash = new HashTableExercises();
+        /*HashTableExercises hash = new HashTableExercises();
         int[] array = {2, 7, 11, 15};
         //System.out.println("The most frequent number is " + hash.mostFrequent(array));
 
         //System.out.println(hash.countPairsWithDiff(array, 2));
         int[] result = hash.twoSum(array, 9);
 
-        System.out.println(Arrays.toString(result));
+        System.out.println(Arrays.toString(result));*/
 
     }
 

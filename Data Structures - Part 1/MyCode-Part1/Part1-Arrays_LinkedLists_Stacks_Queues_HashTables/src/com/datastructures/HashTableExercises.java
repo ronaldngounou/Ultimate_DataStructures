@@ -1,12 +1,13 @@
 package com.datastructures;
 
 import java.util.*;
+import java.util.HashMap;
 
 public class HashTableExercises {
 
     public int mostFrequent(int[] numbers){
         // [1, 2, 3, 3, 3, 4, 5]
-        HashMap<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         HashSet<Integer> set = new HashSet<>();
 
         checkIfArrayEmpty(numbers);
